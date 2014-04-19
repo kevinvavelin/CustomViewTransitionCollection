@@ -37,12 +37,7 @@
     [super viewDidLoad];
     getDataQ = dispatch_queue_create("DataQ", DISPATCH_QUEUE_SERIAL);
     getImageQ = dispatch_queue_create("ImageQ", DISPATCH_QUEUE_SERIAL);
-    if(_playerName == nil)
-    {
-        UIAlertView *popupName = [[UIAlertView alloc] initWithTitle:@"Player name" message:@"Enter your player name" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Confirm", nil];
-        [popupName setAlertViewStyle:UIAlertViewStylePlainTextInput];
-        [popupName show];
-    }
+    [self loadDribbble:@"CreativeDash"];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -109,17 +104,6 @@
     return (DribbbleCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
 }
 
-#pragma mark UIAlertView Delegate
-
--(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    if(![[alertView textFieldAtIndex:0].text isEqualToString:@""])
-    {
-        _playerName = [alertView textFieldAtIndex:0].text;
-        [self loadDribbble:_playerName];
-    }
-}
-
 #pragma mark Load Dribble Object
 
 -(void)loadDribbble:(NSString *)player
@@ -129,30 +113,23 @@
         NSString *followingURL = [NSString stringWithFormat:@"http://api.dribbble.com/players/%@/shots/following", player];
         NSURL *dribbbleURL = [NSURL URLWithString:followingURL];
         NSData *dribbbleData = [NSData dataWithContentsOfURL:dribbbleURL];
-        if(dribbbleData)
+        _shotsArray = [NSMutableArray array];
+        NSDictionary *dribbbleShots = [NSJSONSerialization JSONObjectWithData:dribbbleData options:NSJSONReadingAllowFragments error:&error];
+        NSLog(@"Dribbble = %@", dribbbleShots);
+        NSArray *shots = [dribbbleShots valueForKey:@"shots"];
+        for(NSDictionary *shotsInformations in shots)
         {
-            _shotsArray = [NSMutableArray array];
-            NSDictionary *dribbbleShots = [NSJSONSerialization JSONObjectWithData:dribbbleData options:NSJSONReadingAllowFragments error:&error];
-            NSLog(@"Dribbble = %@", dribbbleShots);
-            NSArray *shots = [dribbbleShots valueForKey:@"shots"];
-            for(NSDictionary *shotsInformations in shots)
-            {
-                NSMutableDictionary *informations = [NSMutableDictionary dictionary];
-                dispatch_async(getImageQ, ^{
-                    NSData *imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[shotsInformations valueForKey:@"image_url"]]];
-                    UIImage *image = [UIImage imageWithData:imgData];
-                    [informations setValue:image forKey:@"image"];
-                    [informations setValue:[[shotsInformations valueForKey:@"player"] valueForKey:@"username"] forKey:@"name"];
-                    [_shotsArray addObject:informations];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.collectionView reloadData];
-                    });
+            NSMutableDictionary *informations = [NSMutableDictionary dictionary];
+            dispatch_async(getImageQ, ^{
+                NSData *imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[shotsInformations valueForKey:@"image_url"]]];
+                UIImage *image = [UIImage imageWithData:imgData];
+                [informations setValue:image forKey:@"image"];
+                [informations setValue:[[shotsInformations valueForKey:@"player"] valueForKey:@"username"] forKey:@"name"];
+                [_shotsArray addObject:informations];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.collectionView reloadData];
                 });
-            }
-        } else {
-            UIAlertView *popupName = [[UIAlertView alloc] initWithTitle:@"Player namowe" message:@"Enter your player name" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Confirm", nil];
-            [popupName setAlertViewStyle:UIAlertViewStylePlainTextInput];
-            [popupName show];
+            });
         }
     });
 }
