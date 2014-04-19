@@ -9,6 +9,9 @@
 #import "MainViewController.h"
 
 @interface MainViewController ()
+{
+    NSArray *_nameTransition;
+}
 
 @end
 
@@ -26,6 +29,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _nameTransition = @[@"Collection View"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,13 +44,26 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return [_nameTransition count];
 }
 
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier = @"SegueCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    [cell.textLabel setText:[_nameTransition objectAtIndex:indexPath.row]];
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:[_nameTransition objectAtIndex:indexPath.row] sender:self];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
 
 @end

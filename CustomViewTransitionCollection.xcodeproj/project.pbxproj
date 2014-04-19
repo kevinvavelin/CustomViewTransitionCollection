@@ -21,6 +21,11 @@
 		1347DF081901E56B00D7CB13 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1347DF061901E56B00D7CB13 /* InfoPlist.strings */; };
 		1347DF0A1901E56B00D7CB13 /* CustomViewTransitionCollectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1347DF091901E56B00D7CB13 /* CustomViewTransitionCollectionTests.m */; };
 		1347DF151901E8D900D7CB13 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1347DF141901E8D900D7CB13 /* MainViewController.m */; };
+		1368EBAB1902A90200771ADA /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1368EBAA1902A90200771ADA /* CollectionViewController.m */; };
+		1368EBAF1902A9EA00771ADA /* DribbbleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1368EBAE1902A9EA00771ADA /* DribbbleCell.m */; };
+		1368EBB21902FABC00771ADA /* ShowPhotoCollectionViewTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1368EBB11902FABC00771ADA /* ShowPhotoCollectionViewTransition.m */; };
+		1368EBB61902FAFB00771ADA /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1368EBB51902FAFB00771ADA /* DetailViewController.m */; };
+		1368EBB91902FF8A00771ADA /* DismissPhotoCollectionViewTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1368EBB81902FF8A00771ADA /* DismissPhotoCollectionViewTransition.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +58,16 @@
 		1347DF091901E56B00D7CB13 /* CustomViewTransitionCollectionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomViewTransitionCollectionTests.m; sourceTree = "<group>"; };
 		1347DF131901E8D900D7CB13 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		1347DF141901E8D900D7CB13 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		1368EBA91902A90200771ADA /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		1368EBAA1902A90200771ADA /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		1368EBAD1902A9EA00771ADA /* DribbbleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DribbbleCell.h; sourceTree = "<group>"; };
+		1368EBAE1902A9EA00771ADA /* DribbbleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DribbbleCell.m; sourceTree = "<group>"; };
+		1368EBB01902FABC00771ADA /* ShowPhotoCollectionViewTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowPhotoCollectionViewTransition.h; sourceTree = "<group>"; };
+		1368EBB11902FABC00771ADA /* ShowPhotoCollectionViewTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowPhotoCollectionViewTransition.m; sourceTree = "<group>"; };
+		1368EBB41902FAFB00771ADA /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		1368EBB51902FAFB00771ADA /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		1368EBB71902FF8A00771ADA /* DismissPhotoCollectionViewTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DismissPhotoCollectionViewTransition.h; sourceTree = "<group>"; };
+		1368EBB81902FF8A00771ADA /* DismissPhotoCollectionViewTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DismissPhotoCollectionViewTransition.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +132,8 @@
 				1347DEF01901E56B00D7CB13 /* Main.storyboard */,
 				1347DF131901E8D900D7CB13 /* MainViewController.h */,
 				1347DF141901E8D900D7CB13 /* MainViewController.m */,
+				1368EBB31902FAC000771ADA /* Custom Animation */,
+				1368EBAC1902A9D300771ADA /* Collection View */,
 				1347DEF61901E56B00D7CB13 /* Images.xcassets */,
 				1347DEE51901E56B00D7CB13 /* Supporting Files */,
 			);
@@ -150,6 +167,30 @@
 				1347DF061901E56B00D7CB13 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1368EBAC1902A9D300771ADA /* Collection View */ = {
+			isa = PBXGroup;
+			children = (
+				1368EBA91902A90200771ADA /* CollectionViewController.h */,
+				1368EBAA1902A90200771ADA /* CollectionViewController.m */,
+				1368EBAD1902A9EA00771ADA /* DribbbleCell.h */,
+				1368EBAE1902A9EA00771ADA /* DribbbleCell.m */,
+				1368EBB41902FAFB00771ADA /* DetailViewController.h */,
+				1368EBB51902FAFB00771ADA /* DetailViewController.m */,
+			);
+			name = "Collection View";
+			sourceTree = "<group>";
+		};
+		1368EBB31902FAC000771ADA /* Custom Animation */ = {
+			isa = PBXGroup;
+			children = (
+				1368EBB01902FABC00771ADA /* ShowPhotoCollectionViewTransition.h */,
+				1368EBB11902FABC00771ADA /* ShowPhotoCollectionViewTransition.m */,
+				1368EBB71902FF8A00771ADA /* DismissPhotoCollectionViewTransition.h */,
+				1368EBB81902FF8A00771ADA /* DismissPhotoCollectionViewTransition.m */,
+			);
+			name = "Custom Animation";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,9 +290,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1368EBAB1902A90200771ADA /* CollectionViewController.m in Sources */,
+				1368EBB91902FF8A00771ADA /* DismissPhotoCollectionViewTransition.m in Sources */,
+				1368EBB21902FABC00771ADA /* ShowPhotoCollectionViewTransition.m in Sources */,
 				1347DEEF1901E56B00D7CB13 /* AppDelegate.m in Sources */,
+				1368EBAF1902A9EA00771ADA /* DribbbleCell.m in Sources */,
 				1347DF151901E8D900D7CB13 /* MainViewController.m in Sources */,
 				1347DEEB1901E56B00D7CB13 /* main.m in Sources */,
+				1368EBB61902FAFB00771ADA /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +502,7 @@
 				1347DF0F1901E56B00D7CB13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1347DF101901E56B00D7CB13 /* Build configuration list for PBXNativeTarget "CustomViewTransitionCollectionTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +511,7 @@
 				1347DF121901E56B00D7CB13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
